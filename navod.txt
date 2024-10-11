@@ -1,7 +1,7 @@
 //prerekvizity
 //dependency manager NPM (tento program je dodavany spolecne s Node.js)
 // v php byl dependency manger Composer (ten tady nepotrbeujeme)
-
+//doporucuji nainstalovat do VSC rozsireni VUE official
 //mac si muze nodejs naistalovat pres homebrew
 # brew install node
 
@@ -29,12 +29,109 @@ https://cs.vuejs.org/
 //odentrujte to nebo napiste y a pak to od entrujte
 
 //terminal se nad obcas zepta na volbu
-(n/Y) - uz je vybrane Y ale muzeme rict n, kdyz chcete Y tka staci dat enter
+(n/Y) - uz je predvybrane Y ale muzeme rict n, kdyz chcete Y tka staci dat enter
 (y) - program vam dal jen 1 volbu, napiste y nebo jen dejte enter
 (n/y) - program po vas chce odpoved musite explicitne napsat y nebo n
 
 
 //nyni ze dobrazi dotaznicek
 //my budem echit zacit uplne od 0, takze na vsehcno odpovezte NO
+//po vytvoreni projektu nas to vyzve ke spusteni techto tri prikazu
+//1) cd zoo - presune pozici terminalu ze slozky vue-minikurz do slozky zoo
+//2) npm install - teneto prikaz dostahuje vsechny dalsi knihovny/dependence. Stejny prikaz jsme pouzivali v composeru (composer install), ktery nam dostahoval knihovny do vendor slozky. NPM misto vendor slozky ma slozku node_modules.
+//3) npm run dev - toto nam spusti projekt s vlastnim localhostem (vue nespoleha na xampp ani mamp, ma vlastni localhost)
 
+Done. Now run:
+  cd zoo
+  npm install
+  npm run dev
 
+//spusti se nam loaclni server: http://localhost:5173/
+
+//PAMATUJTE!!!
+//to co vidite na adrese localhost jeste neni hotovy produkt
+//aplikace bezi a vypada jako finalni produkt ale jeji vnitrni mechanismy jeste nejsou doladene pro spusteni
+//abyhcom aplikaci pripravili pro spusteni, tak se potreba spustit prikaz
+# npm run build
+//tento prikaz vezme vsehcny soubory VUE projektu a vytvroti z toho HTML, CSS, JS
+
+//kokneme se ted na ten finalni produkt
+# npm run preview
+//spusti se nam loaclni server: http://localhost:4173/
+
+//my budeme vetsinu casu pouzivat: http://localhost:5173/
+
+//proc pouzivta frameworky?
+//1) Stranka je zalozne na komponentach. Je mozne tedy aplikaci jednoduce upravoat a rozsirovat. navi ma kazada komponenta vlasnti JS a CSS. Kod je pak prehledny a modularni.
+//2) Framework provadi ruzne optimalizacni operace. (spojuje souboury do 1, minifukuje kod, nezahrne nepouzite soubory)
+//3) Kod je reaktivni. HTML je propojene s nejakou JS promennou a kdykoliv kdy se promenna zmeni, tak to HTML na to zareaguje a prekresli se. Ve vanille jsme to museli delat manualne skrze document.querySelector a innerHTML. 
+
+//cela aplikace se spousti skrze soubor index.html
+//RACT a VUE jsou single page aplikace (SPA)
+
+//SPA ma nevyhodu: SEO ho nedokaze prozkoumat
+
+//SPA -> SSR (SERVER SIDE RENDERING) dokaze prvni strnaku vygenerovat na serveru, aby SEO melo co cist
+
+//vsechny vase kody budou ve slozce src
+//v src jsou 2 korenove soubory
+//App.vue
+//main.js
+
+//vue pouziva SINGLE FILE COMPONENT
+//ve frameworcich se obsecne komponente sklada ze 3 souboru: script, html a CSS
+//vue je jediny ktery tyt tri casti ma v 1 souboru (usnandnuje to praci, nemsute hledat 3 ruzne soubory)
+//SFC - se sklada z bloku script:setup, template, style:scoped
+
+//styly v componentach jsou scopovany
+//vue ma ale specialni soubor pro globalni styly
+//sem budeme psat styly, ktere chceme aplikovat pro vsehcny elmenty na strance
+// /assets/main.css
+
+//pojdme si nyni vytvorit nasi prvni komponentu
+//vsechny komponenty budeme vytvaret do slozky /src/components
+//Tony preferuje "flat" strukturu souboru: toto znamena, ze nemume komponenty organizovat do podslozek
+
+//nazvy komponent se snazte vzdy pojmonovavat tak aby mely alepson 2 slova
+
+//v korenove komponent App.vue musime komponent PocetNavstevniku naimportovat
+//po naimportovani komponenty muzeme komponentu vykretli v bloku template jako obycetejny HTML element
+// <PocetNavstevniku />
+
+//styly ktere jsou uvedene v komponente maji nevyssi priorit
+
+//reaktivita
+//v template bloku muzeme pouzit dvojte chlupate zavorky {{ }}, kterym si rika interpolace/double mustache
+
+//poznamka: syntakticke chyb najdete v konozoli
+
+//abyhcom mohli vytovrit reaktivni promennou, tka je potreba pouzit funkci ref()
+//do funkce ref() se ulozi startovaci hodnota
+//vanilla JS tuto funkci nema, je to exkluzivni pro vue
+//exclusivni funkce musime naimportovat
+//import {ref} from "vue"
+
+//ukol: Vytvorte komponetu ktera se bude jmenovat UkolOdpocitavadlo.vue, na obrazovce se objevi na azcatku cislo 10, pak se zacne postupne odpocitavat a po doaszeni 0 se objevi misto cisla "Hotovo!"
+
+//krome ref() existuje i computed() promenna
+//computed promenna je zavisla na jinych reaktivnich proemnnych
+//kdykoliv se zmeni nejaka zavisla rekativni promenna, tak se prepocita i computed promenna
+
+//direktiva v-on nam na elemnt pripoji posluchace
+// v-on:click=""
+//do "" muzete psat JS operace
+//nebo do "" vlozite volani funkce¨
+// v-on:click="" ma zkraceny zapis @click=""
+
+//direktiva v-bind
+//v atributu elementu nemuzeme pouzit {{}}
+//pokud chceme mit dynamicky atribut, tak musime pouzit direktivu v-bind
+// v-bind:type="typInputu"
+//zkracene by to vypadala takhle
+// :type="typInputu"
+//pokud se jedna o atribut disabled, checked nebo selected (atributy, ktere jsou singlove bez hodnoty), tak se do "" dava booleanovska hodnota
+//pokud je boolean true, tak se atrbitu vypise jinak se vynecha
+// :disabled="booleanPromenna"
+
+//6 hodinovy tutorial na zakladni funkce Vue
+https://www.youtube.com/watch?v=I_xLMmNeLDY

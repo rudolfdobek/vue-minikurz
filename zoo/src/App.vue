@@ -1,47 +1,54 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import PocetNavstevniku from './components/PocetNavstevniku.vue';
+import ComputedPromenna from './components/ComputedPromenna.vue';
+import DirektivaOn from './components/DirektivaOn.vue';
+import DirektivaBind from './components/DirektivaBind.vue';
 </script>
 
+
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div class="container">
+    <h1>Zoo</h1>
+    <p class="uvod">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui repellat quos, error necessitatibus itaque dignissimos sit, libero debitis est facilis, recusandae delectus voluptate iure maxime. Est quam aperiam incidunt iure.</p>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+    <div class="karta">
+      <PocetNavstevniku />
     </div>
-  </header>
 
-  <main>
-    <TheWelcome />
-  </main>
+    <div class="karta">
+      <ComputedPromenna />
+    </div>
+
+    <div class="karta">
+      <DirektivaOn />
+    </div>
+
+    <div class="karta">
+      <DirektivaBind />
+    </div>
+
+
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-}
+    h1 {
+      color: cadetblue;
+      text-align: center;
+    }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+    p.uvod {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
+    .karta {
+      background-color: coral;
+      border-radius: 10px;
+      margin: 1rem;
+      padding: 2rem;
+      font-size: 1.1rem;
+      color: white;
+    }
 </style>
