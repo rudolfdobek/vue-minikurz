@@ -1,0 +1,40 @@
+//prerekvizity
+//dependency manager NPM (tento program je dodavany spolecne s Node.js)
+// v php byl dependency manger Composer (ten tady nepotrbeujeme)
+
+//mac si muze nodejs naistalovat pres homebrew
+# brew install node
+
+//stahneme si a nainstalujeme nodejs
+//https://nodejs.org/en
+
+//kdyz vas to vyzve k tomu jestli chcete nainstalovat dodatecne tooly, tak rekene ne.
+
+//restartovat VSC
+
+//overeni zda npm funguje
+//cislo verze
+# npm -v
+
+//vue dokumentace
+https://vuejs.org/
+https://cs.vuejs.org/
+
+//nyni muzeme vytvorit vue projekt
+//otevreme terminal ve slozce kam chceme projekt vytvorit
+# npm create vue@latest zoo
+
+//prikazova radka se zepta zda knihovnu chceme opravdu stahnout
+// v zavorce uvidite (y)
+//odentrujte to nebo napiste y a pak to od entrujte
+
+//terminal se nad obcas zepta na volbu
+(n/Y) - uz je vybrane Y ale muzeme rict n, kdyz chcete Y tka staci dat enter
+(y) - program vam dal jen 1 volbu, napiste y nebo jen dejte enter
+(n/y) - program po vas chce odpoved musite explicitne napsat y nebo n
+
+
+//nyni ze dobrazi dotaznicek
+//my budem echit zacit uplne od 0, takze na vsehcno odpovezte NO
+
+
